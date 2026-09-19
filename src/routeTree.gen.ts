@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AulasRouteImport } from './routes/aulas'
+import { Route as HerramientasRouteImport } from './routes/herramientas'
+import { Route as ScratchRouteImport } from './routes/scratch'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AulasRoute = AulasRouteImport.update({
+  id: '/aulas',
+  path: '/aulas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HerramientasRoute = HerramientasRouteImport.update({
+  id: '/herramientas',
+  path: '/herramientas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScratchRoute = ScratchRouteImport.update({
+  id: '/scratch',
+  path: '/scratch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/aulas': typeof AulasRoute
+  '/herramientas': typeof HerramientasRoute
+  '/scratch': typeof ScratchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/aulas': typeof AulasRoute
+  '/herramientas': typeof HerramientasRoute
+  '/scratch': typeof ScratchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/aulas': typeof AulasRoute
+  '/herramientas': typeof HerramientasRoute
+  '/scratch': typeof ScratchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/aulas' | '/herramientas' | '/scratch'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/aulas' | '/herramientas' | '/scratch'
+  id: '__root__' | '/' | '/aulas' | '/herramientas' | '/scratch'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AulasRoute: typeof AulasRoute
+  HerramientasRoute: typeof HerramientasRoute
+  ScratchRoute: typeof ScratchRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aulas': {
+      id: '/aulas'
+      path: '/aulas'
+      fullPath: '/aulas'
+      preLoaderRoute: typeof AulasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/herramientas': {
+      id: '/herramientas'
+      path: '/herramientas'
+      fullPath: '/herramientas'
+      preLoaderRoute: typeof HerramientasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scratch': {
+      id: '/scratch'
+      path: '/scratch'
+      fullPath: '/scratch'
+      preLoaderRoute: typeof ScratchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AulasRoute: AulasRoute,
+  HerramientasRoute: HerramientasRoute,
+  ScratchRoute: ScratchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
