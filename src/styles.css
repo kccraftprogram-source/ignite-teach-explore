@@ -65,6 +65,11 @@
   --color-cyan-soft: var(--cyan-soft);
   --color-orange-soft: var(--orange-soft);
   --color-violet-soft: var(--violet-soft);
+  --color-classroom: var(--classroom);
+  --color-classroom-foreground: var(--classroom-foreground);
+  --color-classroom-panel: var(--classroom-panel);
+  --color-classroom-border: var(--classroom-border);
+  --color-classroom-muted: var(--classroom-muted);
 }
 
 :root {
@@ -105,6 +110,11 @@
   --cyan-soft: oklch(0.93 0.075 206);
   --orange-soft: oklch(0.93 0.09 70);
   --violet-soft: oklch(0.92 0.07 305);
+  --classroom: oklch(0.17 0.035 265);
+  --classroom-foreground: oklch(0.97 0.01 250);
+  --classroom-panel: oklch(0.22 0.04 265);
+  --classroom-border: oklch(0.32 0.04 265);
+  --classroom-muted: oklch(0.72 0.03 255);
 }
 
 .dark {
